@@ -1,0 +1,16 @@
+<% if client_signed_in? == false and trainer_signed_in? == false  %>
+  <h2>sign up for client</h2>
+  <%= link_to "SIGN UP", new_client_registration_path %>
+  <h2>sign up for trainer</h2>
+  <%= link_to "SIGN UP", new_trainer_registration_path %>
+  <h2>sign in for client</h2>
+  <%= link_to "SIGN IN", new_client_session_path %>
+  
+<% elsif client_signed_in? == true and trainer_signed_in? == false %>
+  <%= render template: "posts/index"%>
+  <%#= button_to "LOG OUT", destroy_user_session_path, :method => :delete,
+                      :data => { :no_turbolink => true} %>
+<% else %>
+  <%= link_to "SIGN UP", new_user_registration_path %><br>
+  <%= link_to "SIGN IN", new_user_session_path %>
+<% end %>
